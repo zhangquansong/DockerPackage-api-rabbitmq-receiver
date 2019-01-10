@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clt.api.mapper.CouponMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.clt.api.entity.Coupon">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="money" property="money" />
+		<result column="init_money" property="initMoney" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="use_time" property="useTime" />
+		<result column="start_time" property="startTime" />
+		<result column="over_time" property="overTime" />
+		<result column="type" property="type" />
+		<result column="status" property="status" />
+		<result column="is_always" property="isAlways" />
+		<result column="product_id" property="productId" />
+		<result column="investors_id" property="investorsId" />
+		<result column="use_range" property="useRange" />
+		<result column="note" property="note" />
+		<result column="rate" property="rate" />
+		<result column="at_least" property="atLeast" />
+		<result column="use_range_type" property="useRangeType" />
+		<result column="expiry_day" property="expiryDay" />
+		<result column="sender_id" property="senderId" />
+		<result column="is_delete" property="isDelete" />
+		<result column="version" property="version" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id AS userId, money, init_money AS initMoney, create_time AS createTime, update_time AS updateTime, use_time AS useTime, start_time AS startTime, over_time AS overTime, type, status, is_always AS isAlways, product_id AS productId, investors_id AS investorsId, use_range AS useRange, note, rate, at_least AS atLeast, use_range_type AS useRangeType, expiry_day AS expiryDay, sender_id AS senderId, is_delete AS isDelete, version
+    </sql>
+
+</mapper>

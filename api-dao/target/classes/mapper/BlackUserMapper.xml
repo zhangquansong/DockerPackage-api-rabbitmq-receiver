@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clt.api.mapper.BlackUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.clt.api.entity.BlackUser">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="black_user_ip" property="blackUserIp"/>
+        <result column="black_user_imei" property="blackUserImei"/>
+        <result column="user_login_name" property="userLoginName"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_phone" property="userPhone"/>
+        <result column="user_sex" property="userSex"/>
+        <result column="user_id_card" property="userIdCard"/>
+        <result column="user_code" property="userCode"/>
+        <result column="user_type" property="userType"/>
+        <result column="user_address" property="userAddress"/>
+        <result column="black_user_description" property="blackUserDescription"/>
+        <result column="black_user_note" property="blackUserNote"/>
+        <result column="black_user_status" property="blackUserStatus"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="is_delete" property="isDelete"/>
+        <result column="black_user_version" property="blackUserVersion"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id AS userId, black_user_ip AS blackUserIp, black_user_imei AS blackUserImei, user_login_name AS
+        userLoginName, user_name AS userName, user_phone AS userPhone, user_sex AS userSex, user_id_card AS userIdCard,
+        user_code AS userCode, user_type AS userType, user_address AS userAddress, black_user_description AS
+        blackUserDescription, black_user_note AS blackUserNote, black_user_status AS blackUserStatus, create_time AS
+        createTime, update_time AS updateTime, is_delete AS isDelete, black_user_version AS blackUserVersion
+    </sql>
+
+</mapper>

@@ -1,0 +1,148 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/,http://eureka-server-2:8762/eureka/,http://eureka-server-3:8763/eureka/
+server:
+  port: 8485
+spring:
+  application:
+    name: api-rabbitmq-receiver
+  zipkin:
+    base-url: http://server-zipkin:9411
+  profiles:
+    active: ${profiles.active}
+  rabbitmq:
+    appid: 9A064E7A180DD4790F827F546F699BB3
+    host: 10.0.131.236
+    port: 5672
+    username: zqs
+    password: 123456
+    publisher-confirms: true #    支持发布确认
+    publisher-returns: true  #    支持发布返回
+    virtual-host: /
+  rabbit:
+     queue:
+       name: clt-queue
+     topic:
+       exchange: amq.topic
+       routingkey: clt-routingkey
+#  datasource:
+#    url: jdbc:mysql://10.0.131.236:8066/TESTDB
+#    driver-class-name: com.mysql.jdbc.Driver
+#    username: root
+#    password: 123456
+
+#  datasource:
+#      url: jdbc:mysql://10.0.131.236:3306/test?autoReconnect=true&failOverReadOnly=false
+#      driver-class-name: com.mysql.jdbc.Driver
+#      username: root
+#      password: password
+  datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driverClassName: com.mysql.jdbc.Driver
+      druid:
+          url: jdbc:mysql://10.0.131.236:3306/test?allowMultiQueries:true&useUnicode:true&characterEncoding=UTF-8
+          username: root
+          password: password
+          initial-size: 20
+          max-active: 100
+          min-idle: 10
+          max-wait: 60000
+          pool-prepared-statements: true
+          max-pool-prepared-statement-per-connection-size: 20
+          time-between-eviction-runs-millis: 60000
+          min-evictable-idle-time-millis: 300000
+          validation-query: SELECT 1
+          test-while-idle: true
+          test-on-borrow: false
+          test-on-return: false
+          stat-view-servlet:
+              enabled: false
+              resetEnable: false
+              url-pattern: /druid/*
+              login-username: admin
+              login-password: admin
+          filter:
+              stat:
+                  log-slow-sql: true
+                  slow-sql-millis: 1000
+                  merge-sql: true
+              wall:
+                  config:
+                      multi-statement-allow: true
+
+  redisson:
+      address: "redis://10.0.131.236:6379"
+      password: 123456
+  redis:
+      database: 0
+      host: 10.0.131.236
+      port: 6379
+      password:  123456    # 密码（默认为空） 这是中文
+      timeout: 6000      # 连接超时时长（毫秒）
+      prekey: dev_       # redis 环境剥离，前置key test_:测试, dev_:开发, 正是环境:prod_, 默认是def_
+      pool:
+          max-active: 1000  # 连接池最大连接数（使用负值表示没有限制）
+          max-wait: -1      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+          max-idle: 10      # 连接池中的最大空闲连接
+          min-idle: 5       # 连接池中的最小空闲连接
+
+#mybatis:
+#
+#  type-aliases-package: com.clt.api.entity
+#
+#  mapper-locations: classpath:mapper/**/*.xml
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.clt.api.entity
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    #序列接口实现类配置
+    #key-generator: com.baomidou.springboot.xxx
+    #逻辑删除配置
+    logic-delete-value: -1
+    logic-not-delete-value: 0
+    #自定义填充策略接口实现
+#    meta-object-handler: com.miaolicai.api.common.utils.MyMetaObjectHandler
+    #自定义SQL注入器
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: countSql
+
+logging:
+  level:
+     com.clt.api.dao: debug
+     com.clt.api.receiver: debug
+
+clt:
+  signa:
+      appkey: 6643150578D49C0BFAB2A53DBC52B801                       #签名key
+      appsecret: D580AB0E7BEAEAB465463444BC1A9533                    #签名appsecret
+      timeExpire: 1                                                  #请求有效时长
+  glob:
+      limitTime: 1       # 全局限制访问参数设置，单位秒
+      limitCount: 50    # 全局限制访问参数设置，单位次
+
+
+
+

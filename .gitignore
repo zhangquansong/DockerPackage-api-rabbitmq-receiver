@@ -1,0 +1,7 @@
+*.name
+.idea
+*.class
+*.jar
+*.lst
+*.tar.gz
+*.iml
